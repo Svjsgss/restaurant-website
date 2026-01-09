@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>مطعم النكهة المميزة</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff8f0;
+  direction: rtl;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  background-color: #d35400;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.menu {
+  margin-top: 30px;
+}
+
+.item {
+  background-color: #fbeee6;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+.item h3 {
+  color: #e67e22;
+}
+
+form {
+  background-color: white;
+  padding: 15px;
+  margin-top: 20px;
+  width: 320px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+}
+
+input[type="submit"] {
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>مطعم النكهة المميزة</h1>
+  <p>أشهى الأطباق الشرقية والعالمية</p>
+</header>
+
+<section class="menu">
+<h2>🍽️ قائمة الطعام</h2>
+
+<div class="item">
+<h3>بيتزا مارجريتا – 3500 جنيه</h3>
+</div>
+
+<div class="item">
+<h3>كباب لحم مشوي – 5000 جنيه</h3>
+</div>
+
+<div class="item">
+<h3>عصير مانجو – 1500 جنيه</h3>
+</div>
+</section>
+
+<!-- نموذج الطلب -->
+<section>
+<h2>📝 طلب أكل</h2>
+
+<form onsubmit="sendOrder(event)">
+<label>اسم الزبون</label>
+<input type="text" id="name" required>
+
+<label>رقم الهاتف</label>
+<input type="text" id="phone" required>
+
+<label>الوجبة</label>
+<select id="meal" onchange="calcPrice()" required>
+  <option value="">اختر وجبة</option>
+  <option value="3500">بيتزا مارجريتا</option>
+  <option value="5000">كباب لحم مشوي</option>
+  <option value="1500">عصير مانجو</option>
+</select>
+
+<label>الكمية</label>
+<input type="number" id="qty" min="1" value="1" onchange="calcPrice()">
+
+<p><strong>الإجمالي: <span id="total">0</span> جنيه</strong></p>
+
+<input type="submit" value="إرسال الطلب">
+</form>
+</section>
+
+<!-- حجز طاولة -->
+<section>
+<h2>📅 حجز طاولة</h2>
+
+<form onsubmit="reserveTable(event)">
+<label>الاسم</label>
+<input type="text" id="rname" required>
+
+<label>رقم الهاتف</label>
+<input type="text" id="rphone" required>
+
+<label>عدد الأشخاص</label>
+<input type="number" id="people" min="1" required>
+
+<label>التاريخ</label>
+<input type="date" id="date" required>
+
+<label>الوقت</label>
+<input type="time" id="time" required>
+
+<input type="submit" value="حجز الآن">
+</form>
+</section>
+
+<footer>
+📞 0123456789 | © 2025 مطعم النكهة المميزة
+</footer>
+
+<script>
+function calcPrice() {
+  let price = document.getElementById("meal").value;
+  let qty = document.getElementById("qty").value;
+  document.getElementById("total").innerText = price * qty;
+}
+
+function sendOrder(e) {
+  e.preventDefault();
+  alert(
+    "✅ تم إرسال الطلب بنجاح\n\n" +
+    "الاسم: " + name.value + "\n" +
+    "الهاتف: " + phone.value + "\n" +
+    "الإجمالي: " + total.innerText + " جنيه"
+  );
+}
+
+function reserveTable(e) {
+  e.preventDefault();
+  alert(
+    "📅 تم تأكيد الحجز\n\n" +
+    "الاسم: " + rname.value + "\n" +
+    "عدد الأشخاص: " + people.value + "\n" +
+    "التاريخ: " + date.value + "\n" +
+    "الوقت: " + time.value
+  );
+}
+</script>
+
+</body>
+  </html>
+  
