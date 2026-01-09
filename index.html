@@ -1,70 +1,88 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-<meta charset="UTF-8">
-<title>مطعم النكهة المميزة</title>
-
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background-color: #fff8f0;
-  direction: rtl;
-  padding: 20px;
-}
-
-header {
-  text-align: center;
-  background-color: #d35400;
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.menu {
-  margin-top: 30px;
-}
-
-.item {
-  background-color: #fbeee6;
-  padding: 15px;
-  margin: 15px 0;
-  border-radius: 8px;
-}
-
-.item h3 {
-  color: #e67e22;
-}
-
-form {
-  background-color: white;
-  padding: 15px;
-  margin-top: 20px;
-  width: 320px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-input, select {
-  width: 100%;
-  padding: 8px;
-  margin: 8px 0;
-}
-
-input[type="submit"] {
-  background-color: #2980b9;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-footer {
-  text-align: center;
-  margin-top: 40px;
-  color: #777;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>مطعم النكهة المميزة</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff8f0;
+      direction: rtl;
+      padding: 20px;
+      color: #333;
+    }
+    header {
+      text-align: center;
+      background-color: #d35400;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .menu {
+      margin-top: 30px;
+    }
+    .item {
+      background-color: #fbeee6;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .item img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 8px;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .item h3 {
+      margin: 0;
+      color: #e67e22;
+    }
+    form {
+      background-color: #fff;
+      padding: 15px;
+      margin-top: 20px;
+      width: 320px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 6px 0;
+      border-radius: 4px;
+      border: 1px solid #aaa;
+    }
+    button {
+      background-color: #27ae60;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .contact-buttons a {
+      display: inline-block;
+      margin: 5px;
+      padding: 10px 15px;
+      background-color: #2980b9;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .contact-buttons a:hover {
+      background-color: #1e6fa3;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #999;
+    }
+  </style>
 </head>
-
 <body>
 
 <header>
@@ -73,106 +91,78 @@ footer {
 </header>
 
 <section class="menu">
-<h2>🍽️ قائمة الطعام</h2>
+  <h2>🍽️ قائمة الطعام</h2>
 
-<div class="item">
-<h3>بيتزا مارجريتا – 3500 جنيه</h3>
-</div>
+  <div class="item">
+    <img src="https://via.placeholder.com/300x200.png?text=بيتزا+مارجريتا">
+    <h3>بيتزا مارجريتا</h3>
+    <p>جبنة موزاريلا، صلصة طماطم، ريحان</p>
+    <p>السعر: 3500 جنيه</p>
+  </div>
 
-<div class="item">
-<h3>كباب لحم مشوي – 5000 جنيه</h3>
-</div>
-
-<div class="item">
-<h3>عصير مانجو – 1500 جنيه</h3>
-</div>
+  <div class="item">
+    <img src="https://via.placeholder.com/300x200.png?text=كباب+لحم">
+    <h3>كباب لحم مشوي</h3>
+    <p>لحم بقري متبل</p>
+    <p>السعر: 5000 جنيه</p>
+  </div>
 </section>
 
-<!-- نموذج الطلب -->
+<!-- نموذج الطلب مع رسالة تأكيد -->
 <section>
-<h2>📝 طلب أكل</h2>
+  <h2>📝 طلب وجبة</h2>
 
-<form onsubmit="sendOrder(event)">
-<label>اسم الزبون</label>
-<input type="text" id="name" required>
-
-<label>رقم الهاتف</label>
-<input type="text" id="phone" required>
-
-<label>الوجبة</label>
-<select id="meal" onchange="calcPrice()" required>
-  <option value="">اختر وجبة</option>
-  <option value="3500">بيتزا مارجريتا</option>
-  <option value="5000">كباب لحم مشوي</option>
-  <option value="1500">عصير مانجو</option>
-</select>
-
-<label>الكمية</label>
-<input type="number" id="qty" min="1" value="1" onchange="calcPrice()">
-
-<p><strong>الإجمالي: <span id="total">0</span> جنيه</strong></p>
-
-<input type="submit" value="إرسال الطلب">
-</form>
+  <form name="order" method="POST" data-netlify="true" onsubmit="return confirmOrder(event)">
+    <input type="hidden" name="form-name" value="order">
+    <input type="text" name="customer_name" placeholder="اسمك" required>
+    <input type="text" name="phone" placeholder="رقم الهاتف" required>
+    <input type="text" name="meal" placeholder="اسم الوجبة" required>
+    <input type="number" name="quantity" placeholder="الكمية" min="1" required>
+    <button type="submit">إرسال الطلب</button>
+  </form>
 </section>
 
-<!-- حجز طاولة -->
+<!-- نموذج الحجز مع رسالة تأكيد -->
 <section>
-<h2>📅 حجز طاولة</h2>
+  <h2>📅 حجز طاولة</h2>
 
-<form onsubmit="reserveTable(event)">
-<label>الاسم</label>
-<input type="text" id="rname" required>
+  <form name="reservation" method="POST" data-netlify="true" onsubmit="return confirmReservation(event)">
+    <input type="hidden" name="form-name" value="reservation">
+    <input type="text" name="name" placeholder="الاسم" required>
+    <input type="text" name="phone" placeholder="رقم الهاتف" required>
+    <input type="number" name="people" placeholder="عدد الأشخاص" min="1" required>
+    <input type="date" name="date" required>
+    <input type="time" name="time" required>
+    <button type="submit">حجز الآن</button>
+  </form>
+</section>
 
-<label>رقم الهاتف</label>
-<input type="text" id="rphone" required>
-
-<label>عدد الأشخاص</label>
-<input type="number" id="people" min="1" required>
-
-<label>التاريخ</label>
-<input type="date" id="date" required>
-
-<label>الوقت</label>
-<input type="time" id="time" required>
-
-<input type="submit" value="حجز الآن">
-</form>
+<!-- أزرار التواصل -->
+<section class="contact-buttons">
+  <h2>📱 تواصل معنا</h2>
+  <a href="https://wa.me/20129405148?text=مرحباً!%20أريد%20تقديم%20طلب" target="_blank">واتساب</a>
+  <a href="mailto:medooadil715@gamil.com?subject=طلب%20من%20المطعم&body=مرحباً،" target="_blank">إيميل</a>
 </section>
 
 <footer>
-📞 0123456789 | © 2025 مطعم النكهة المميزة
+  📞 للتواصل: 0129405148 <br>
+  © جميع الحقوق محفوظة 2025
 </footer>
 
-<form>
-function calcPrice() {
-  let price = document.getElementById("meal").value;
-  let qty = document.getElementById("qty").value;
-  document.getElementById("total").innerText = price * qty;
-}
+<script>
+  // رسالة تأكيد بعد إرسال الطلب
+  function confirmOrder(event) {
+    event.preventDefault(); 
+    alert("تم استلام طلبك بنجاح! سنتواصل معك قريباً 📩");
+    event.target.submit(); 
+  }
 
-function sendOrder(e) {
-  e.preventDefault();
-  alert(
-    "✅ تم إرسال الطلب بنجاح\n\n" +
-    "الاسم: " + name.value + "\n" +
-    "الهاتف: " + phone.value + "\n" +
-    "الإجمالي: " + total.innerText + " جنيه"
-  );
-}
-
-function reserveTable(e) {
-  e.preventDefault();
-  alert(
-    "📅 تم تأكيد الحجز\n\n" +
-    "الاسم: " + rname.value + "\n" +
-    "عدد الأشخاص: " + people.value + "\n" +
-    "التاريخ: " + date.value + "\n" +
-    "الوقت: " + time.value
-  );
-}
-</form>
+  function confirmReservation(event) {
+    event.preventDefault();
+    alert("تم حجز طاولتك بنجاح! سنتواصل معك لتأكيد التفاصيل 📩");
+    event.target.submit();
+  }
+</script>
 
 </body>
-  </html>
-  
+</html>
